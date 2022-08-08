@@ -1,0 +1,260 @@
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+}
+
+:root {
+    --green: #54b192;
+    --green-ligt: #a4cec0;
+    --gray: #3f3d56;
+    --smooth: all 0.3s ease-in;
+  }
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+button {
+  text-align: center;
+  color: #fff;
+  background-color: var(--gray);
+  padding: 0.8rem 2.5rem;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: var(--smooth);
+}
+
+button:hover {
+  background-color: green;
+  transition: var(--smooth);
+}
+
+/* Header */
+header {
+  /* Menu dat tren hinh anh */
+  width: 100%;
+}
+
+.navbar {
+  /* Dua tat ca element len 1 hang */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.navbar__link {
+  list-style: none;
+  margin: 55px;
+  
+}
+
+.navbar__link a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 300;
+  transition: var(--smooth);
+}
+
+.navbar__link a:hover {
+  color: var(--green);
+  transition: var(--smooth);
+}
+
+.navbar__btn {
+  font-size: 1rem;
+  background-color: var(--green);
+  margin-left: 45px;
+}
+
+@media (min-width: 992px) {
+  .navbar__links {
+    position: initial;
+    transform: translateX(0);
+    opacity: 1;
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .navbar__link a {
+    color: var(--gray);
+  }
+  .navbar__btn {
+    background-color: var(--gray);
+  }
+}
+
+.main-menu {
+    /* Dua tat ca element len 1 hang */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+.menu__link{
+    list-style: none;
+    margin: 55px;
+}
+
+/* Modal */
+.modal-body__btn{
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:300px;
+}
+.modal-dialog{
+  width:50%;
+}
+/* Sidebar */
+*,::before,::after{
+  box-sizing:border-box;
+}
+body{
+  position: relative;
+  margin:  0;
+  padding: 1rem 0 0 5rem;
+  font-family: var(--body-font);
+  background: white;
+  transition:0.5s;
+}
+h1{
+  margin:0;
+}
+ul,li{
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+.l-sidebar{
+  position: fixed;
+  top:0;
+  left:0;
+  width:200px;
+  height:100vh;
+  background: grey;
+  padding: 1.25rem 0.5rem 2rem;
+  transition: 0.5s;
+  z-index: 100;
+}
+.sidebar{
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.sidebar__logo{
+  display:flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+.sidebar__logo-icon{
+  margin-right: 0.75rem;
+  width:70px;
+  height:50px;
+  color:white;
+}
+.sidebar__logo-text{
+  font-size: 1rem;
+  color:white;
+  font-weight: 700;
+}
+.sidebar__toggle{
+  position: absolute;
+  top: 1.1rem;
+  right:-0.5rem;
+  width:18px;
+  height:18px;
+  font-size: 1.25rem;
+  color: black;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition:0.5s;
+}
+.sidebar__link{
+  display:flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  transition: 0.5s;
+}
+.sidebar__link:hover{
+  background: yellow;
+  color: black;
+}
+.sidebar__icon{
+  font-size: 1.5rem;
+  margin-right:0.75rem;
+}
+.sidebar__text{
+  font-weight: 700;
+}
+.show{
+width: 350px;
+}
+.rotate{
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+ /* Logo */
+ .logo{
+  display:flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+.logo-icon{
+  margin-right: 0.75rem;
+  width:100px;
+  height:100px;
+  color:white;
+}
+
+/* Dropdown */
+
+.ul .user-show .show{
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.login-page{
+  background-color: black;
+  height:100%;
+}
+
+.login-box{
+  margin-top: 250px;
+  display:flex;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card{
+  width:30%;
+  border: 3px solid #007bff;
+}
+
+/* Error */
+.error{
+  color: red;
+}

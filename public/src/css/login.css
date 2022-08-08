@@ -1,0 +1,17 @@
+.login-page{
+    background-color: #e9ecef;
+    height:100%;
+}
+
+.login-box{
+    margin-top: 300px;
+    display:flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card{
+    width:30%;
+    border: 3px solid #007bff;
+}
