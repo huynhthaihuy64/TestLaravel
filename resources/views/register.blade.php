@@ -12,6 +12,7 @@
                 <a href="#" class="h1"><b>Register</b></a>
             </div>
             <div class="card-body">
+                @include('alert')
                 <form action="" method="post">
                     @if ($errors->has('name'))
                         <span class="ml-1 text-danger">

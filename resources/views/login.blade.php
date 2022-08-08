@@ -16,6 +16,11 @@
                 <p class="login-box-msg">Sign in to start your session</p>
                 @include('alert')
                 <form action="" method="post">
+                    @if ($errors->has('email'))
+                        <span class="ml-1 text-danger">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
@@ -24,6 +29,11 @@
                             </div>
                         </div>
                     </div>
+                    @if ($errors->has('password'))
+                        <span class="ml-1 text-danger">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
                     <div class="input-group mb-3">
                         <input type="password" name="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
