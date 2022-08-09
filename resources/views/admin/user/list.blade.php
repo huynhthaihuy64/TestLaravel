@@ -1,8 +1,9 @@
 @extends('master')
 @section('content')
     @include('admin.sidebar')
-    <h1 class="text-center mt-5">List Cv</h1>
+    <h1 class="text-center mt-5">List User</h1>
     <div class="container mt-5">
+        @include('alert')
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -12,28 +13,32 @@
                     <th>Password</th>
                     <th>Role</th>
                     <th>Update</th>
-                    <th>Send Mail</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style=" width: 100px">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fa fa-pencil-square-o"></i>
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </td>
-                    <td><a class="btn btn-success btn-sm" href="#">
-                            Send Mail
-                        </a></td>
-                </tr>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->password }}</td>
+                        <td>@php
+                            if ($user->role == 1) {
+                                echo '<span class="btn btn-danger btn-xs">NO</span>';
+                            } else {
+                                echo '<span class="btn btn-success btn-xs">YES</span>';
+                            }
+                        @endphp</td>
+                        <td style=" width: 100px">
+                            <a class="btn btn-primary btn-sm" href="/admin/user/edit/{{ $user->id }}">
+                                <i class="fa fa-pencil-square-o"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="/admin/user/delete/{{ $user->id }}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

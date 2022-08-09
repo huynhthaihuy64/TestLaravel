@@ -15,7 +15,8 @@
                                 class="sidebar__link dropdown-toggle">User</a>
                             <ul class="collapse" id="listUser">
                                 <li>
-                                    <a href="./user/list" class="sidebar__link w-50" aria-expanded="false">List
+                                    <a href="{{ asset(route('user.list')) }}" class="sidebar__link w-50"
+                                        aria-expanded="false">List
                                         User</a>
                                 </li>
                             </ul>
@@ -25,7 +26,7 @@
                                 class="sidebar__link dropdown-toggle">Cv</a>
                             <ul class="collapse" id="listCv">
                                 <li>
-                                    <a href="./cv/list" class="sidebar__link w-50">List CV</a>
+                                    <a href="{{ asset(route('cv.list')) }}" class="sidebar__link w-50">List CV</a>
                                 </li>
                             </ul>
                         </li>
@@ -34,7 +35,8 @@
                                 class="sidebar__link dropdown-toggle">Confirm Schedule</a>
                             <ul class="collapse" id="listConfirm">
                                 <li>
-                                    <a href="./confirm/list" class="sidebar__link w-50">List Confirm</a>
+                                    <a href="{{ asset(route('confirm.list')) }}" class="sidebar__link w-50">List
+                                        Confirm</a>
                                 </li>
                             </ul>
                         </li>

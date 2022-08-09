@@ -14,9 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-sm-12 m-auto">
-                <h3>Xin chào bạn </h3>
-                <p> Cảm ơn bạn đã đăng ký! </p>
-            </div>
+                {!! $content !!} </div>
         </div>
     </div>
 </body>

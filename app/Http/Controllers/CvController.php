@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CvRequest;
 use App\Models\Cv;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CvController extends Controller
 {
@@ -14,8 +16,10 @@ class CvController extends Controller
      */
     public function index()
     {
+        $cvs = CV::get();
         return view('admin.cv.list', [
             'title' => 'List Cv',
+            'cvs' => $cvs,
         ]);
     }
 
@@ -26,7 +30,9 @@ class CvController extends Controller
      */
     public function create()
     {
-        //
+        return view('submit_cv', [
+            'title' => 'Submit Cv',
+        ]);
     }
 
     /**
@@ -35,9 +41,21 @@ class CvController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CvRequest $request)
     {
         //
+        // $request->file->filename;
+        $fileName = $request->file->getClientOriginalName();
+        $request->file->move(public_path('uploads'), $fileName);
+        $cv = new Cv;
+        $cv->name = $request->name;
+        $cv->email = $request->email;
+        $cv->phone = $request->phone;
+        $cv->file = $fileName;
+        $cv->position = $request->position;
+        $cv->date = $request->date;
+        $cv->save();
+        return redirect()->route('index');
     }
 
     /**
@@ -46,11 +64,14 @@ class CvController extends Controller
      * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function show(Cv $cv)
+    public function show($id)
     {
         //
+        return view('admin.cv.edit', [
+            'title' => 'Edit CV',
+            'cv' => Cv::get()->find($id),
+        ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,7 +80,6 @@ class CvController extends Controller
      */
     public function edit(Cv $cv)
     {
-        //
     }
 
     /**
@@ -69,9 +89,21 @@ class CvController extends Controller
      * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cv $cv)
+    public function update(CvRequest $request, $id)
     {
-        //
+        $cv = Cv::find($id);
+        $fileName = $request->file->getClientOriginalName();
+        $request->file->move(public_path('uploads'), $fileName);
+        $cv->name = $request->name;
+        $cv->email = $request->email;
+        $cv->phone = $request->phone;
+        $cv->file = $fileName;
+        $cv->date =  !empty($cv->date) && $cv->date != NULL ? $cv->date : $request->date;
+        $cv->position = $request->position;
+        $cv->active = $request->active;
+        $cv->save();
+        Session::flash('success', 'Update Success');
+        return redirect()->route('cv.list');
     }
 
     /**
@@ -80,8 +112,16 @@ class CvController extends Controller
      * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cv $cv)
+    public function destroy($id)
     {
         //
+        $del = Cv::find($id)->delete();
+        if ($del) {
+            Session::flash('success', 'Delete Success');
+            return redirect()->back();
+        } else {
+            Session::flash('error', 'Delete Fail');
+            return redirect()->back();
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\sendMail;
+use Illuminate\Support\Facades\Session;
 
 class SubscriberController extends Controller
 {
@@ -14,6 +15,7 @@ class SubscriberController extends Controller
 
         Mail::to($mail)->send(new sendMail);
 
-        return "<p> Thành công! Email của bạn đã được gửi</p>";
+        Session::flash('success', 'Update Success');
+        return redirect()->back();
     }
 }

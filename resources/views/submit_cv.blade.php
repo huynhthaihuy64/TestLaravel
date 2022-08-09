@@ -1,15 +1,20 @@
-@extends('master')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    @include('head')
+</head>
+
+<body class="hold-transition login-page">
     <div class="container">
         <div class="login-box">
-            <div class="login-card card-primary">
+            <div class="login-card w-50 card-primary">
                 <div class="card-header text-center">
                     <a href="#" class="h1"><b>Submit CV</b></a>
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Submit your cv</p>
-
+                    @include('alert')
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <input type="text" name="name" class="form-control" placeholder="Name" required>
@@ -36,7 +41,7 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="file" name="cv" class="form-control" placeholder="Input File" required>
+                            <input type="file" name="file" class="form-control" placeholder="Input File" required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fa-solid fa-file"></span>
@@ -68,4 +73,7 @@
             </div>
         </div>
     </div>
-@endsection
+    @include('footer')
+</body>
+
+</html>

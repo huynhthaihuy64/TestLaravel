@@ -64,7 +64,7 @@
                     </a>
                 </div>
                 <div class="text-center mt-3 mb-3">
-                    Not yet a member? <a href="./register.php">Register Now</a>
+                    Not yet a member? <a href="{{ asset(route('register')) }}">Register Now</a>
                 </div>
             </div>
         </div>

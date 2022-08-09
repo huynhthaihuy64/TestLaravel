@@ -50,12 +50,12 @@ class PageController extends Controller
     }
     public function store(RegisterRequest $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role = 1;
-        $user->save();
+        User::create($request->all(), with($request->role == 1));
+        return redirect()->route('index');
+    }
+    public function logout()
+    {
+        Auth::logout();
         return redirect()->route('index');
     }
 }

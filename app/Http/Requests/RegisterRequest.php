@@ -26,15 +26,16 @@ class RegisterRequest extends FormRequest
         return [
             //
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
         ];
     }
-    public function message()
+    public function messages()
     {
         return [
             'name.required' => 'Please enter your name',
             'email.required' => 'Please enter your email',
+            'email.unique' => "Email already exist",
             'password.required' => 'Please enter your password',
             'password.regex' => 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
         ];

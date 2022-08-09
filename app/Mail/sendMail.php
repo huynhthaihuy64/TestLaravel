@@ -28,6 +28,11 @@ class sendMail extends Mailable
      */
     public function build()
     {
-        return $this->from("admin@programmingfields.com")->view('email-template');
+        $content = '<h1>Cảm ơn bạn đã tham gia phỏng vấn công ty chúng tôi</h1>
+        <h2>Nếu bạn có thể phỏng vấn trước 6pm thì hãy confirm mail này và truy cập trang web để tạo tài khoản và apply lịch phỏng vấn</h2>
+        <a href="http://localhost/Recruitment-Manager/index.php" class="btn btn-block btn-danger">
+              Confirm
+          </a>';
+        return $this->from("admin@programmingfields.com")->view('email-template', ['content' => $content]);
     }
 }

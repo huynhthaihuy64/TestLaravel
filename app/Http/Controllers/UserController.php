@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -15,8 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = User::get();
         return view('admin.user.list', [
             'title' => 'List User',
+            'users' => $user
         ]);
     }
 
@@ -54,9 +57,14 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
         //
+        $user = User::get()->find($id);
+        return view('admin.user.edit', [
+            'title' => 'Edit User',
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -68,6 +76,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+
     }
 
     /**
@@ -77,9 +86,11 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, $id)
     {
         //
+        User::find($id)->update($request->all());
+        return redirect()->route('user.list');
     }
 
     /**
@@ -88,8 +99,16 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
         //
+        $del = User::find($id)->delete();
+        if ($del) {
+            Session::flash('success', 'Delete Success');
+            return redirect()->back();
+        } else {
+            Session::flash('error', 'Delete Fail');
+            return redirect()->back();
+        }
     }
 }

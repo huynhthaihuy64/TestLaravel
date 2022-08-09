@@ -29,7 +29,7 @@ class LoginRequest extends FormRequest
             'password' => 'required',
         ];
     }
-    public function message()
+    public function messages()
     {
         return [
             'email.required' => 'Please enter your email',

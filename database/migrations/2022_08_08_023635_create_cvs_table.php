@@ -20,8 +20,8 @@ class CreateCvsTable extends Migration
             $table->string('phone');
             $table->string('position');
             $table->string('file');
-            $table->integer('active');
-            $table->string('date');
+            $table->integer('active')->default(1);
+            $table->string('date')->nullable();
             $table->timestamps();
         });
     }
