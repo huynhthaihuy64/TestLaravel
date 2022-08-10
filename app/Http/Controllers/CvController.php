@@ -74,15 +74,6 @@ class CvController extends Controller
             'cv' => Cv::get()->find($id),
         ]);
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cv  $cv
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cv $cv)
-    {
-    }
 
     /**
      * Update the specified resource in storage.

@@ -14,7 +14,8 @@
             <nav class="navbar justify-content-end">
                 <ul class="navbar__links">
                     @if (Auth::user())
-                        <li class="navbar__link"><a href="#">Chào bạn {{ Auth::user()->name }}</a></li>
+                        <li class="navbar__link"><a href="#">Hi! {{ Auth::user()->name }}</a>
+                        </li>
                         <li class="navbar__link"><a href="{{ asset(route('logout')) }}">Logout</a></li>
                         <li class="navbar__link"><a href="{{ asset(route('confirm.create')) }}">Confirm Schedule</a>
                         </li>

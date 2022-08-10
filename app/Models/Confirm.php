@@ -9,6 +9,8 @@ class Confirm extends Model
 {
     use HasFactory;
 
+    protected $table = 'confirms';
+
     protected $fillable = [
         'name',
         'email',
