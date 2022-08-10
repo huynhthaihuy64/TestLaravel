@@ -5,7 +5,8 @@
     @include('head')
 </head>
 
-<body class="login-page">
+
+<body class="login-page bg-white">
 
     @include('header')
 

@@ -236,24 +236,6 @@ width: 350px;
   font-weight: 700;
 }
 
-.login-page{
-  background-color: black;
-  height:100%;
-}
-
-.login-box{
-  margin-top: 250px;
-  display:flex;
-  width:100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-card{
-  width:30%;
-  border: 3px solid #007bff;
-}
-
 /* Error */
 .error{
   color: red;

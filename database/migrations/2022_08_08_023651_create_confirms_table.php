@@ -16,7 +16,7 @@ class CreateConfirmsTable extends Migration
         Schema::create('confirms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('date');
             $table->timestamps();
         });

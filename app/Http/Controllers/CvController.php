@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CvRequest;
+use App\Mail\MyTestMail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Cv;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -123,5 +125,20 @@ class CvController extends Controller
             Session::flash('error', 'Delete Fail');
             return redirect()->back();
         }
+    }
+
+    public function sendmail($mail)
+    {
+        $details = [
+            'title' => 'Mail from Huyhuynh',
+            'body' => '<h1>Cảm ơn bạn đã tham gia phỏng vấn công ty chúng tôi</h1>
+            <h2>Nếu bạn có thể phỏng vấn trước 6pm thì hãy confirm mail này và truy cập trang web để tạo tài khoản và apply lịch phỏng vấn</h2>
+            <a href="http://localhost/Recruitment-Manager/index.php" class="btn btn-block btn-danger">
+                  Confirm
+              </a>'
+        ];
+        Mail::to($mail)->send(new MyTestMail($details));
+        Session::flash('success', 'Email is sent');
+        return redirect()->back();
     }
 }

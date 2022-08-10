@@ -14,7 +14,9 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-sm-12 m-auto">
-                {!! $content !!} </div>
+                <h1>{!! $details['title'] !!}</h1>
+                <p>{!! $details['body'] !!}</p>
+            </div>
         </div>
     </div>
 </body>

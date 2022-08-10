@@ -5,10 +5,10 @@
     @include('head')
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition submit-page">
     <div class="container">
-        <div class="login-box">
-            <div class="login-card w-50 card-primary">
+        <div class="submit-box">
+            <div class="submit-card card-primary">
                 <div class="card-header text-center">
                     <a href="#" class="h1"><b>Submit CV</b></a>
                 </div>

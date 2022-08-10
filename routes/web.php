@@ -43,7 +43,10 @@ Route::get('/index/register', [PageController::class, 'register'])->name('regist
 Route::post('/index/register', [PageController::class, 'store'])->name('register.store');
 Route::get('/index/submit-cv', [CvController::class, 'create'])->name('cv.create');
 Route::post('/index/submit-cv', [CvController::class, 'store'])->name('cv.store');
-Route::get('/subscribe/{email}', [SubscriberController::class, 'sendEmail'])->name('sendmail');
+Route::get('/index/forgot', [PageController::class, 'forgot'])->name('forgot');
+Route::post('/index/forgot', [PageController::class, 'postForgot'])->name('postForgot');
+Route::get('/index/reset/{token}', [PageController::class, 'getPassword'])->name('getPassword');
+Route::post('/index/reset/{token}', [PageController::class, 'updatePassword'])->name('updatePassword');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -64,11 +67,17 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{id}', [CvController::class, 'show'])->name('cv.show');
             Route::post('edit/{id}', [CvController::class, 'update'])->name('cv.update');
             Route::get('delete/{id}', [CvController::class, 'destroy'])->name('cv.del');
+            Route::get('mail/{email}', [CvController::class, 'sendmail'])->name('cv.mail');
         });
         //Confirm
         Route::prefix('confirm')->group(function () {
             Route::get('list', [ConfirmController::class, 'index'])->name('confirm.list');
+            Route::get('create', [ConfirmController::class, 'create'])->name('confirm.create');
+            Route::post('create', [ConfirmController::class, 'store'])->name('confirm.store');
             Route::get('delete/{id}', [ConfirmController::class, 'destroy'])->name('confirm.del');
+            Route::get('mail/{email}&&{date}', [ConfirmController::class, 'acceptInterview'])->name('confirm.accept');
+            Route::get('mail/pass/{email}&&{name}', [ConfirmController::class, 'passInterview'])->name('confirm.pass');
+            Route::get('mail/fail/{email}&&{name}', [ConfirmController::class, 'failInterview'])->name('confirm.fail');
         });
     });
 });

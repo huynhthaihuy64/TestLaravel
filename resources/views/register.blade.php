@@ -6,8 +6,8 @@
 </head>
 
 <body class="hold-transition login-page">
-    <div class="register-box">
-        <div class="register-card card-primary">
+    <div class="login-box">
+        <div class="login-card card-primary">
             <div class="card-header text-center">
                 <a href="#" class="h1"><b>Register</b></a>
             </div>
@@ -77,11 +77,11 @@
                 </form>
 
                 <div class="social-auth-links text-center mt-3">
-                    <a href="./login.php" class="btn btn-block btn-primary">
+                    <a href="{{ asset(route('login')) }}" class="btn btn-block btn-primary">
                         <i class="fa-solid fa-circle-arrow-left mr-1"></i>
                         Return Login Page
                     </a>
-                    <a href="./forgot-password.php" class="btn btn-block btn-danger">
+                    <a href="{{ asset(route('forgot')) }}" class="btn btn-block btn-danger">
                         <i class="fa-solid fa-key mr-2"></i>Forgot password
                     </a>
                 </div>
