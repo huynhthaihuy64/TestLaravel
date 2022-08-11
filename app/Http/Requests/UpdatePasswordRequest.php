@@ -26,7 +26,7 @@ class UpdatePasswordRequest extends FormRequest
         return [
             'email' => 'required|email|exists:users',
             'password' => 'required|same:confirm_password',
-            'confirm_password' => 'required',
+            'confirm_password' => 'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
         ];
     }
 
@@ -38,6 +38,7 @@ class UpdatePasswordRequest extends FormRequest
             'email.exists' => 'Email is not exist',
             'password.required' => 'Password is required',
             'password.confirmed' => 'Password confirm does not match',
+            'password.regex' => 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters',
         ];
     }
 }

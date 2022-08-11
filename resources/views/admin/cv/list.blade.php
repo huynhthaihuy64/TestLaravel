@@ -39,14 +39,14 @@
                         }
                     @endphp</td>
                     <td style=" width: 100px">
-                        <a class="btn btn-primary btn-sm" href="/admin/cv/edit/{{ $cv->id }}">
+                        <a class="btn btn-primary btn-sm" href="{{ asset(route('cv.show', $cv->id)) }}">
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
-                        <a class="btn btn-danger btn-sm" href="/admin/cv/delete/{{ $cv->id }}">
+                        <a class="btn btn-danger btn-sm" href="{{ asset(route('cv.del', $cv->id)) }}">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>
-                    <td><a class="btn btn-success btn-sm" href="/admin/cv/mail/{{ $cv->email }}">
+                    <td><a class="btn btn-success btn-sm" href="{{ asset(route('cv.mail', $cv->email)) }}">
                             Send Mail
                         </a></td>
                 </tr>

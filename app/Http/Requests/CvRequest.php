@@ -25,7 +25,9 @@ class CvRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:cvs',
+            'phone' => 'required|numeric',
+            'position' => 'required',
             'file' => 'required',
         ];
     }
@@ -34,6 +36,9 @@ class CvRequest extends FormRequest
         return [
             'name.required' => 'Name is required',
             'email.required' => 'Email is required',
+            'email.unique' => 'Email is exist',
+            'phone.required' => 'Phone is required',
+            'phone.numeric' => 'Phone must be a number',
             'file.required' => 'File is required',
         ];
     }

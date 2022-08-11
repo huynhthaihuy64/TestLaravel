@@ -13,6 +13,7 @@
             </div>
             <div class="card-body">
                 <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+                @include('alert')
                 <form action="" method="post">
                     @if ($errors->has('email'))
                         <span class="ml-1 text-danger">

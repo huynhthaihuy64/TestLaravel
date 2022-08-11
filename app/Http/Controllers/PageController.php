@@ -109,8 +109,10 @@ class PageController extends Controller
             ->where(['email' => $request->email, 'token' => $request->token])
             ->first();
 
-        if (!$updatePassword)
-            return back()->withInput()->with('error', 'Invalid token!');
+        if (!$updatePassword) {
+            Session::flash('error', 'Update failed!');
+            return redirect()->back();
+        }
 
         $user = User::where('email', $request->email)
             ->update(['password' => Hash::make($request->password)]);

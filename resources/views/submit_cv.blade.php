@@ -16,48 +16,78 @@
                     <p class="login-box-msg">Submit your cv</p>
                     @include('alert')
                     <form action="" method="POST" enctype="multipart/form-data">
+                        @if ($errors->has('name'))
+                            <span class="ml-1 text-danger">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
                         <div class="input-group mb-3">
-                            <input type="text" name="name" class="form-control" placeholder="Name" required>
+                            <input type="text" name="name" class="form-control" placeholder="Name">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
                                 </div>
                             </div>
                         </div>
+                        @if ($errors->has('email'))
+                            <span class="ml-1 text-danger">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                         <div class="input-group mb-3">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
                             </div>
                         </div>
+                        @if ($errors->has('phone'))
+                            <span class="ml-1 text-danger">
+                                <strong>{{ $errors->first('phone') }}</strong>
+                            </span>
+                        @endif
                         <div class="input-group mb-3">
-                            <input type="text" name="phone" class="form-control" placeholder="Phone" required>
+                            <input type="text" name="phone" class="form-control" placeholder="Phone">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                             </div>
                         </div>
+                        @if ($errors->has('file'))
+                            <span class="ml-1 text-danger">
+                                <strong>{{ $errors->first('file') }}</strong>
+                            </span>
+                        @endif
                         <div class="input-group mb-3">
-                            <input type="file" name="file" class="form-control" placeholder="Input File" required>
+                            <input type="file" name="file" class="form-control" placeholder="Input File">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fa-solid fa-file"></span>
                                 </div>
                             </div>
                         </div>
+                        @if ($errors->has('position'))
+                            <span class="ml-1 text-danger">
+                                <strong>{{ $errors->first('position') }}</strong>
+                            </span>
+                        @endif
                         <div class="input-group mb-3">
-                            <input type="text" name="position" class="form-control" placeholder="Position" required>
+                            <input type="text" name="position" class="form-control" placeholder="Position">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fa-solid fa-plus"></span>
                                 </div>
                             </div>
                         </div>
+                        @if ($errors->has('date'))
+                            <span class="ml-1 text-danger">
+                                <strong>{{ $errors->first('date') }}</strong>
+                            </span>
+                        @endif
                         <div class="input-group mb-3">
-                            <input type="date" name="date" class="form-control" placeholder="Position" required>
+                            <input type="date" name="date" class="form-control">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fa-solid fa-calendar"></span>

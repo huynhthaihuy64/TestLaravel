@@ -29,21 +29,21 @@
                     <td>{{ $data->email }}</td>
                     <td>{{ $data->date }}</td>
                     <td><a class="btn btn-success btn-sm col-5"
-                            href="/admin/confirm/mail/pass/{{ $data->email }}&&{{ $data->name }}">
+                            href="{{ asset(route('confirm.pass', [$data->email, $data->name])) }}">
                             Pass
                         </a>
                         <a class=" btn btn-danger btn-sm col-5"
-                            href="/admin/confirm/mail/fail/{{ $data->email }}&&{{ $data->name }}">
+                            href="{{ asset(route('confirm.fail', [$data->email, $data->name])) }}">
                             Fail
                         </a>
                     </td>
                     <td><a class="btn btn-info btn-sm col-12"
-                            href="/admin/confirm/mail/{{ $data->email }}&&{{ $data->date }}">
+                            href="{{ asset(route('confirm.accept', [$data->email, $data->name])) }}">
                             Accept Interview
                         </a></td>
                     <td style="width:
                             100px">
-                        <a class="btn btn-danger btn-sm" href="/admin/confirm/delete/{{ $data->id }}">
+                        <a class="btn btn-danger btn-sm" href="{{ asset(route('confirm.del', $data->id)) }}">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>

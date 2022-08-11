@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class CvUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,23 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
             'email' => 'required',
-            'password' => 'required|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
+            'phone' => 'required|numeric',
+            'position' => 'required',
+            'active' => 'required',
         ];
     }
+
     public function messages()
     {
         return [
-            'email.required' => 'Please enter your email',
-            'password.required' => 'Please enter your password',
-            'password.regex' => 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters',
+            'name.required' => 'Name is required',
+            'email.required' => 'Email is required',
+            'phone.required' => 'Email is required',
+            'phone.numeric' => 'Phoen must be a number',
+            'position.required' => 'Position is required',
+            'active.required' => 'Active is required',
         ];
     }
 }

@@ -35,10 +35,10 @@
                         }
                     @endphp</td>
                     <td style=" width: 100px">
-                        <a class="btn btn-primary btn-sm" href="/admin/user/edit/{{ $user->id }}">
+                        <a class="btn btn-primary btn-sm" href="{{ asset(route('user.show', $user->id)) }}">
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
-                        <a class="btn btn-danger btn-sm" href="/admin/user/delete/{{ $user->id }}">
+                        <a class="btn btn-danger btn-sm" href="{{ asset(route('user.del', $user->id)) }}">
                             <i class="fa fa-trash"></i>
                         </a>
                     </td>

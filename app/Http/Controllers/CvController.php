@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CvRequest;
+use App\Http\Requests\CvUpdateRequest;
 use App\Mail\MyTestMail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Cv;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class CvController extends Controller
 {
@@ -45,9 +46,8 @@ class CvController extends Controller
      */
     public function store(CvRequest $request)
     {
-        //
-        // $request->file->filename;
-        $fileName = $request->file->getClientOriginalName();
+        $tname = $request->name;
+        $fileName = $tname . '-' . $request->file->getClientOriginalName();
         $request->file->move(public_path('uploads'), $fileName);
         $cv = new Cv;
         $cv->name = $request->name;
@@ -82,10 +82,11 @@ class CvController extends Controller
      * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function update(CvRequest $request, $id)
+    public function update(CvUpdateRequest $request, $id)
     {
         $cv = Cv::find($id);
-        $fileName = $request->file->getClientOriginalName();
+        $tname = $request->name;
+        $fileName =  $tname . '-' . $request->file->getClientOriginalName();
         $request->file->move(public_path('uploads'), $fileName);
         $cv->name = $request->name;
         $cv->email = $request->email;
