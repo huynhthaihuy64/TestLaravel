@@ -3,7 +3,7 @@
         <div class="l-sidebar" id="sidebar">
             <div class="wrapper">
                 <nav id="sidebar">
-                    <a href="" class="sidebar__logo">
+                    <a href="{{ asset(route('admins.index')) }}" class="sidebar__logo">
                         <img src="{{ asset('src/img/mor.jpg.png') }}" alt="Insullusion" class="sidebar__logo-icon">
                     </a>
                     <div class="sidebar__toggle" id="sidebar-toggle">

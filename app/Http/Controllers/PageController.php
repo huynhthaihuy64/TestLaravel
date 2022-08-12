@@ -56,7 +56,7 @@ class PageController extends Controller
 
             return redirect()->route('admins.index');
         } else {
-            Session::flash('error', 'Email or Password is incorrect');
+            Session::flash('error', 'Password is incorrect');
             return redirect()->back();
         }
     }

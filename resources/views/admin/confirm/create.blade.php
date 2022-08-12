@@ -41,6 +41,11 @@
                                 </div>
                             </div>
                         </div>
+                        @if ($errors->has('date'))
+                            <span class="ml-1 text-danger">
+                                <strong>{{ $errors->first('date') }}</strong>
+                            </span>
+                        @endif
                         <div class="input-group mb-3">
                             <input type="datetime-local" name="date" class="form-control">
                             <div class="input-group-append">

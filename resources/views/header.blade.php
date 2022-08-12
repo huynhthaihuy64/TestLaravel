@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <a href="./index.php" class="logo">
+                <a href="{{ asset(route('index')) }}" class="logo">
                     <img src="src/img/mor.jpg.png" alt="Insullusion" class="logo-icon w-50 mt-3">
                 </a>
             </div>

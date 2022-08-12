@@ -27,6 +27,7 @@ class ConfirmRequest extends FormRequest
             //
             'name' => 'required',
             'email' => 'required|unique:confirms',
+            'date' => 'required',
         ];
     }
     public function messages()
@@ -35,6 +36,7 @@ class ConfirmRequest extends FormRequest
             'name.required' => 'Please enter your name',
             'email.required' => 'Please enter your email',
             'email.unique' => "Email already exist",
+            'date.required' => "Date is required",
         ];
     }
 }

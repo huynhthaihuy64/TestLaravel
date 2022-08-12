@@ -38,7 +38,7 @@
                         </a>
                     </td>
                     <td><a class="btn btn-info btn-sm col-12"
-                            href="{{ asset(route('confirm.accept', [$data->email, $data->name])) }}">
+                            href="{{ asset(route('confirm.accept', [$data->email, $data->date])) }}">
                             Accept Interview
                         </a></td>
                     <td style="width:

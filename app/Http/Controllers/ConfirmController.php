@@ -101,9 +101,9 @@ class ConfirmController extends Controller
 
             <h2>Sau quá trình xem xét, công ty đã quyết định mời bạn vào thực tập tại trụ sở của công ty.</h2> <br/>
             
-              <b>-  Địa chỉ: Công ty CP Phần Mềm MOR - CN Đà Nẵng.</b><br/>
+              <h2><b>-  Địa chỉ: Công ty CP Phần Mềm MOR - CN Đà Nẵng.</b><br/>
             
-              <b> 112 Nguyễn Hữu Thọ, Phường Hoà Thuận Tây, Quận Hải Châu, Tp Đà Nẵng.</b><br/>
+              <b> 112 Nguyễn Hữu Thọ, Phường Hoà Thuận Tây, Quận Hải Châu, Tp Đà Nẵng.</b></h2><br/>
               <h2><b>Trân Trọng!</b></h2>'
         ];
         Mail::to($mail)->send(new MyTestMail($details));
@@ -126,7 +126,7 @@ class ConfirmController extends Controller
             <h2><b>Trân trọng!</b></h2>'
         ];
         Mail::to($mail)->send(new MyTestMail($details));
-        Session::flash('success', '' . $name . ' failed the interview');
+        Session::flash('error', '' . $name . ' failed the interview');
         return redirect()->back();
     }
 }

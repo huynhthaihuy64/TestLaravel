@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('list', [UserController::class, 'index'])->name('user.list');
             Route::get('edit/{id}', [UserController::class, 'show'])->name('user.show');
             Route::post('edit/{id}', [UserController::class, 'update'])->name('user.update');
-            Route::get('delete/{id}', [UserController::class, 'destroy'])->name('user.del');
+            Route::get('delete/{id}', [UserController::class, 'destroy'])->name('user.del'); //Muốn dùng Route::delete thì ở form action nên thêm route và @method 'Delete'
         });
         //CV
         Route::prefix('cv')->group(function () {
