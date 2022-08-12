@@ -81,6 +81,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="input-group mb-3">
+                            <h5 class="mr-3">Proposer:</h5>
+                            <select name="id_user">
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">
+                                        {{ $user->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                         @if ($errors->has('date'))
                             <span class="ml-1 text-danger">
                                 <strong>{{ $errors->first('date') }}</strong>

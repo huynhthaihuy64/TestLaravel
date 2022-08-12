@@ -7,6 +7,7 @@ use App\Http\Requests\CvUpdateRequest;
 use App\Mail\MyTestMail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Cv;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,6 +36,7 @@ class CvController extends Controller
     {
         return view('submit_cv', [
             'title' => 'Submit Cv',
+            'users' => User::get(),
         ]);
     }
 
@@ -52,6 +54,7 @@ class CvController extends Controller
         $cv = new Cv;
         $cv->name = $request->name;
         $cv->email = $request->email;
+        $cv->id_user = $request->id_user;
         $cv->phone = $request->phone;
         $cv->file = $fileName;
         $cv->position = $request->position;

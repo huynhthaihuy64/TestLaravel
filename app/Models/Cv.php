@@ -18,7 +18,12 @@ class Cv extends Model
         'position',
         'file',
         'date',
+        'id_user',
         'active',
-
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Model\User', 'id_user', 'id');
+    }
 }

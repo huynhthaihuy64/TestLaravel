@@ -30,6 +30,11 @@ class User extends Authenticatable
         'role',
     ];
 
+    public function Cv()
+    {
+        return $this->belongsTo('App\Model\Cv', 'id_user', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

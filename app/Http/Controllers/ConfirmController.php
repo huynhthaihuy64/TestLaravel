@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ConfirmRequest;
-use App\Models\Confirm;
 use App\Mail\MyTestMail;
 use Illuminate\Support\Facades\Mail;
 use App\Services\ConfirmService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class ConfirmController extends Controller

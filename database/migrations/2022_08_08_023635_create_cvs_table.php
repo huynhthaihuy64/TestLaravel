@@ -20,9 +20,13 @@ class CreateCvsTable extends Migration
             $table->string('phone');
             $table->string('position');
             $table->string('file');
+            $table->bigInteger('id_user')->unsigned();
             $table->integer('active')->default(1);
             $table->string('date')->nullable();
             $table->timestamps();
+        });
+        Schema::table('cvs', function (Blueprint $table) {
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

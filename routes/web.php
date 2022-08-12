@@ -20,22 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [PageController::class, 'index'])->name('index');
 
-// // Confirm
-// Route::get('/admin/confirm/list', [ConfirmController::class, 'index'])->name('confirm.list');
-// Route::get('/admin/confirm/edit/{id}', [ConfirmController::class, 'show'])->name('confirm.show');
-// Route::get('/admin/confirm/delete/{id}', [ConfirmController::class, 'destroy'])->name('confirm.del');
-
-// // User
-// Route::get('/admin/user/list', [UserController::class, 'index'])->name('user.list');
-// Route::get('/admin/user/edit/{id}', [UserController::class, 'show'])->name('user.show');
-// Route::get('/admin/user/delete/{id}', [UserController::class, 'destroy'])->name('user.del');
-
-// //Cv
-// Route::get('/admin/cv/list', [CvController::class, 'index'])->name('cv.list');
-// Route::get('/admin/cv/edit/{id}', [CvController::class, 'show'])->name('cv.show');
-// Route::post('/admin/cv/edit/{id}', [CvController::class, 'update'])->name('cv.update');
-// Route::get('/admin/cv/delete/{id}', [CvController::class, 'destroy'])->name('cv.del');
-
 //Page
 Route::get('/index/login', [PageController::class, 'login'])->name('login');
 Route::post('/index/login', [PageController::class, 'postLogin'])->name('postLogin');

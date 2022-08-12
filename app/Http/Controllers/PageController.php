@@ -6,19 +6,23 @@ use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ForgotRequest;
-use Illuminate\Support\Str;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Hash;
+use App\Services\AuthService;
 use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
 {
     //
+
+    private $authService;
+
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
+    }
+
     public function index()
     {
         return view('home', [
@@ -42,7 +46,6 @@ class PageController extends Controller
 
     public function postLogin(LoginRequest $request)
     {
-        // dd($request->input());
         $email = $request->email;
         $password = $request->password;
         if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => "1"])) {
@@ -79,17 +82,7 @@ class PageController extends Controller
 
     public function postForgot(ForgotRequest $request)
     {
-
-        $token = Str::random(64);
-
-        DB::table('password_resets')->insert(
-            ['email' => $request->email, 'token' => $token, 'created_at' => Carbon::now()]
-        );
-
-        Mail::send('verify', ['token' => $token], function ($message) use ($request) {
-            $message->to($request->email);
-            $message->subject('Reset Password Notification');
-        });
+        $data = $this->authService->postForgot($request);
         Session::flash('success', 'We have e-mailed your password reset link!');
         return redirect()->back();
     }
@@ -104,21 +97,7 @@ class PageController extends Controller
 
     public function updatePassword(UpdatePasswordRequest $request)
     {
-
-        $updatePassword = DB::table('password_resets')
-            ->where(['email' => $request->email, 'token' => $request->token])
-            ->first();
-
-        if (!$updatePassword) {
-            Session::flash('error', 'Update failed!');
-            return redirect()->back();
-        }
-
-        $user = User::where('email', $request->email)
-            ->update(['password' => Hash::make($request->password)]);
-
-        DB::table('password_resets')->where(['email' => $request->email])->delete();
-
+        $data = $this->authService->updatePassword($request);
         Session::flash('success', 'Your password has been changed!');
         return redirect()->route('login');
     }
