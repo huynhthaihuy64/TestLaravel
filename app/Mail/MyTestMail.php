@@ -31,6 +31,6 @@ class MyTestMail extends Mailable
     public function build()
     {
         return $this->subject('Mail from Huỳnh Thái Huy')
-            ->view('admin.email-template');
+            ->view('admin.email_template');
     }
 }

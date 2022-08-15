@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public function Cv()
     {
-        return $this->belongsTo('App\Model\Cv', 'id_user', 'id');
+        return $this->belongsTo('App\Model\Cv', 'user_id', 'id');
     }
 
     /**

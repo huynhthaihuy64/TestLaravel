@@ -83,7 +83,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <h5 class="mr-3">Proposer:</h5>
-                            <select name="id_user">
+                            <select name="user_id">
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">
                                         {{ $user->name }}

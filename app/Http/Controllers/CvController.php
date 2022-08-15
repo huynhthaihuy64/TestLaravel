@@ -53,7 +53,7 @@ class CvController extends Controller
         $cv = new Cv;
         $cv->name = $request->name;
         $cv->email = $request->email;
-        $cv->id_user = $request->id_user;
+        $cv->user_id = $request->user_id;
         $cv->phone = $request->phone;
         $cv->file = $fileName;
         $cv->position = $request->position;
